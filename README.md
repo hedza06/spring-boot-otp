@@ -25,3 +25,6 @@ Command: ```mvn -P{profile} package```
 {profile}: <br><br>
     - dev <br>
     - prod
+
+
+_Written by Heril Muratović._
