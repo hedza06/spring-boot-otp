@@ -5,8 +5,9 @@ Liquibase, JPA and JWT Token Authorization.
 
 ## Running the project
 
-    - Create database with name `test`
-    - Open terminal and type `mvn`
+1. Create database with name **test**
+2. Open terminal and navigate to your project
+3. Type command **mvn**
 
 ## Authentication route
 
