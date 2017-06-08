@@ -22,6 +22,6 @@ Link: http://localhost:8080/
 
 Command: `mvn -P{profile} package
 
-{profile}:
+{profile}: <br><br>
     - dev <br>
     - prod
