@@ -20,7 +20,7 @@ Link: http://localhost:8080/
 
 ## Packaging
 
-Command: `mvn -P{profile} package
+Command: ```mvn -P{profile} package```
 
 {profile}: <br><br>
     - dev <br>
