@@ -10,9 +10,9 @@ Liquibase, JPA and JWT Token Authorization.
 
 ## Authentication route
 
-Link: http://localhost:8080/auth/authenticate
-Method: __POST__
-Data: { username: "admin", password: "admin" }
+Link: http://localhost:8080/auth/authenticate <br />
+Method: __POST__ <br />
+Data: ```{ username: "admin", password: "admin" }```
 
 ## Check application running state
 
@@ -21,3 +21,7 @@ Link: http://localhost:8080/
 ## Packaging
 
 Command: `mvn -P{profile} package
+
+{profile}:
+    - dev <br>
+    - prod
