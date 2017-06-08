@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="now" value="current_timestamp" dbms="postgresql"/>
+    <property name="now" value="sysdate" dbms="oracle"/>
+
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle"/>
+
+    <!-- Create entity user authority -->
+    <changeSet id="00004" author="user" context="dev, prod">
+        <createTable tableName="user_authority">
+            <column name="user_id" type="int(11)">
+                <constraints nullable="false" />
+            </column>
+            <column name="authority_name" type="varchar(50)">
+                <constraints nullable="false" />
+            </column>
+        </createTable>
+
+        <!-- Load data from CSV -->
+        <loadData encoding="UTF-8"
+                  file="../seeds/user_authority.csv"
+                  separator=";"
+                  tableName="user_authority"
+                  relativeToChangelogFile="true"/>
+
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <!-- Migrations -->
+    <include file="changelog/added_entity_User.xml" relativeToChangelogFile="true" />
+    <include file="changelog/added_entity_Role.xml" relativeToChangelogFile="true" />
+    <include file="changelog/added_entity_Authority.xml" relativeToChangelogFile="true" />
+    <include file="changelog/added_entity_UserAuthority.xml" relativeToChangelogFile="true" />
+    <include file="changelog/added_entity_UserRole.xml" relativeToChangelogFile="true" />
+
+    <!-- TODO: add new change sets here! -->
+
+
+    <!-- End of Database Version 1.0 -->
+    <changeSet id="tag_version_1_0" author="user">
+        <tagDatabase tag="version_1.0" />
+    </changeSet>
+
+</databaseChangeLog>

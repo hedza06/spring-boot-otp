@@ -1,0 +1,41 @@
+spring:
+    devtools:
+        restart:
+            enabled: false
+    datasource:
+        url: jdbc:mysql://localhost/production?useUnicode=true&characterEncoding=utf8&useSSL=false
+        name:
+        username: root
+        password: prod
+        hikari:
+            data-source-properties:
+                cachePrepStmts: true
+                prepStmtCacheSize: 250
+                prepStmtCacheSqlLimit: 2048
+                useServerPrepStmts: true
+    jpa:
+        database-platform: org.hibernate.dialect.MySQLInnoDBDialect
+        database: MYSQL
+        show_sql: false
+        open-in-view: false
+        factory-class: org.springframework.data.envers.repository.support.EnversRevisionRepositoryFactoryBean
+        properties:
+            hibernate.cache.use_second_level_cache: false
+            hibernate.cache.use_query_cache: false
+            hibernate.generate_statistics: false
+
+liquibase:
+    contexts: prod
+
+jwt:
+    header: Authorization
+    secret: SpringBootSecretKey
+    expiration: 86400
+
+server:
+    port: 8080
+    compression:
+        enabled: true
+        mime-types: text/html, text/xml, text/plain, text/css, application/javascript, application/json
+
+debug: false
