@@ -42,9 +42,9 @@ public class TokenProvider {
         long now = (new Date()).getTime();
         Date validity = new Date(now);
         if (rememberMe) {
-            validity = new Date(now + this.tokenValidityInSecondsForRememberMe);
+            validity = new Date(now + this.tokenValidityInSecondsForRememberMe * 1000);
         } else {
-            validity = new Date(now + this.tokenValidityInSeconds);
+            validity = new Date(now + this.tokenValidityInSeconds * 1000);
         }
 
         return Jwts.builder()

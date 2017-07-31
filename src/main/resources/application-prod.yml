@@ -30,7 +30,7 @@ liquibase:
 jwt:
     header: Authorization
     secret: SpringBootSecretKey
-    expiration: 86400
+    expiration: 300
 
 server:
     port: 8080
