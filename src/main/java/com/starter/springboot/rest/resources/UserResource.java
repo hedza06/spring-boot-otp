@@ -1,6 +1,5 @@
 package com.starter.springboot.rest.resources;
 
-import com.starter.springboot.auth.AuthenticationController;
 import com.starter.springboot.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
