@@ -1,7 +1,6 @@
 package com.starter.springboot.security;
 
 
-
 import com.starter.springboot.domain.User;
 import com.starter.springboot.exceptions.UserNotActivatedException;
 import com.starter.springboot.repositories.UserRepository;
@@ -41,7 +40,6 @@ public class UserDetailsService implements org.springframework.security.core.use
             if (user.getEnabled() == null || !user.getEnabled()) {
                 throw new UserNotActivatedException("User " + lowercaseLogin + " was not activated");
             }
-
             List<GrantedAuthority> grantedAuthorities = user.getRoles().stream()
                     .map(role -> new SimpleGrantedAuthority(role.getId().toString()))
                     .collect(Collectors.toList());

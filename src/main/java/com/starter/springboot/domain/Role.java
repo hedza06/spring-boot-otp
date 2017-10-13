@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.HashSet;
 import java.util.Set;
 
+
 @Entity
 @Table(name = "role")
 @DynamicInsert
@@ -26,8 +27,8 @@ public class Role {
     @Column(name = "description")
     private String description;
 
-    @ManyToMany(mappedBy = "roles")
     @JsonIgnore
+    @ManyToMany(mappedBy = "roles")
     private Set<User> users = new HashSet<>();
 
     public Long getId() {

@@ -1,11 +1,12 @@
 package com.starter.springboot.domain;
 
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.starter.springboot.enumeration.AuthorityName;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+
 
 @Entity
 @Table(name = "authority")
@@ -17,7 +18,8 @@ public class Authority {
     @Enumerated(EnumType.STRING)
     private AuthorityName name;
 
-    @ManyToMany(mappedBy = "authorities", fetch = FetchType.LAZY)
+    @JsonIgnore
+    @ManyToMany(mappedBy = "authorities")
     private List<User> users;
 
     public AuthorityName getName() {

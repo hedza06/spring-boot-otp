@@ -16,6 +16,7 @@ import org.springframework.stereotype.Component;
 import java.util.*;
 import java.util.stream.Collectors;
 
+
 @Component
 public class TokenProvider {
 
@@ -32,7 +33,13 @@ public class TokenProvider {
     @Value("${jwt.expiration}")
     private long tokenValidityInSecondsForRememberMe;
 
-
+    /**
+     * Method for creating JWT token
+     *
+     * @param authentication - authentication context
+     * @param rememberMe - remember me field
+     * @return Token string
+     */
     public String createToken(Authentication authentication, Boolean rememberMe)
     {
         String authorities = authentication.getAuthorities().stream()
@@ -40,7 +47,7 @@ public class TokenProvider {
             .collect(Collectors.joining(","));
 
         long now = (new Date()).getTime();
-        Date validity = new Date(now);
+        Date validity;
         if (rememberMe) {
             validity = new Date(now + this.tokenValidityInSecondsForRememberMe * 1000);
         } else {
@@ -55,14 +62,20 @@ public class TokenProvider {
             .compact();
     }
 
-    public Authentication getAuthentication(String token) {
+    /**
+     * Method for getting authentication context.
+     *
+     * @param token
+     * @return
+     */
+    public Authentication getAuthentication(String token)
+    {
         Claims claims = Jwts.parser()
             .setSigningKey(secretKey)
             .parseClaimsJws(token)
             .getBody();
 
         String principal = claims.getSubject();
-
         Collection<? extends GrantedAuthority> authorities =
             Arrays.asList(claims.get(AUTHORITIES_KEY).toString().split(",")).stream()
                 .map(authority -> new SimpleGrantedAuthority(authority))
@@ -71,11 +84,20 @@ public class TokenProvider {
         return new UsernamePasswordAuthenticationToken(principal, "", authorities);
     }
 
-    public boolean validateToken(String authToken) {
-        try {
+    /**
+     * Method for validate token.
+     *
+     * @param authToken - JWT token
+     * @return true | false
+     */
+    public boolean validateToken(String authToken)
+    {
+        try
+        {
             Jwts.parser().setSigningKey(secretKey).parseClaimsJws(authToken);
             return true;
-        } catch (SignatureException e) {
+        }
+        catch (SignatureException e) {
             log.info("Invalid JWT signature: " + e.getMessage());
             return false;
         }

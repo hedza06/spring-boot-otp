@@ -30,34 +30,53 @@ public class JWTFilter extends GenericFilterBean {
         this.tokenProvider = tokenProvider;
     }
 
+    /**
+     * Method for filtering JWT Token.
+     *
+     * @param servletRequest - Http request
+     * @param servletResponse - Http response
+     * @param filterChain - filter chain
+     * @throws IOException - Input/Output exception
+     * @throws ServletException - Servlet exception
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
-        throws IOException, ServletException {
-        try {
+        throws IOException, ServletException
+    {
+        try
+        {
             HttpServletRequest httpServletRequest = (HttpServletRequest) servletRequest;
             String jwt = resolveToken(httpServletRequest);
-            if (StringUtils.hasText(jwt)) {
-                if (this.tokenProvider.validateToken(jwt)) {
+            if (StringUtils.hasText(jwt))
+            {
+                if (this.tokenProvider.validateToken(jwt))
+                {
                     Authentication authentication = this.tokenProvider.getAuthentication(jwt);
                     SecurityContextHolder.getContext().setAuthentication(authentication);
                 }
             }
             filterChain.doFilter(servletRequest, servletResponse);
-        } catch (ExpiredJwtException eje) {
+        }
+        catch (ExpiredJwtException eje) {
             log.info("Security exception for user {} - {}", eje.getClaims().getSubject(), eje.getMessage());
             ((HttpServletResponse) servletResponse).setStatus(HttpServletResponse.SC_UNAUTHORIZED);
         }
     }
 
-    private String resolveToken(HttpServletRequest request){
+    /**
+     * Method for resolving token
+     *
+     * @param request - Http request
+     * @return Token string | null
+     */
+    private String resolveToken(HttpServletRequest request)
+    {
         String bearerToken = request.getHeader(JWTConfigurer.AUTHORIZATION_HEADER);
-        if(StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
-            String jwt = bearerToken.substring(7, bearerToken.length());
-            return jwt;
+        if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")){
+            return bearerToken.substring(7, bearerToken.length());
         }
-
         String jwt = request.getParameter(JWTConfigurer.AUTHORIZATION_TOKEN);
-        if(StringUtils.hasText(jwt)) {
+        if (StringUtils.hasText(jwt)) {
             return jwt;
         }
         return null;

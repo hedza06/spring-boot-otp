@@ -1,6 +1,5 @@
 package com.starter.springboot.domain;
 
-
 import java.util.Date;
 import java.util.Set;
 
@@ -16,6 +15,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 
 @Entity
 @Table(name = "user")
