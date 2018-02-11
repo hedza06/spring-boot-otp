@@ -32,14 +32,15 @@ Response: `{ id_token: "token_hash" }`
 
 ## OTP routes that you can called after getting access token
 
-1. Generate OTP and send it to e-mail
-Route: /api/otp/generate
-Method: GET
+1. Generate OTP and send it to e-mail <br>
+Route: /api/otp/generate <br>
+Method: GET <br><br>
 
-2. Validate OTP
-Route: /api/otp/validate
-Method: POST
+2. Validate OTP <br>
+Route: /api/otp/validate <br>
+Method: POST <br>
 Example Payload: { "otp": "your otp number" }
+<br>
 
 
 ## Packaging for production
