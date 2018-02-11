@@ -3,7 +3,7 @@ spring:
         restart:
             enabled: true
     datasource:
-        url: jdbc:mysql://localhost/test?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost/otp?useUnicode=true&characterEncoding=utf8&useSSL=false
         name:
         username: root
         password: root

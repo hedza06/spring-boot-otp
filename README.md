@@ -5,7 +5,7 @@ Spring Boot project with demonstration of OTP authentication technique.
 
 ## Running the project
 
-1. Create database with name **test**
+1. Create database with name **otp**
 2. Open terminal and navigate to your project
 3. Type command **mvn install**
 4. Type command **mvn spring-boot:run**
@@ -34,12 +34,13 @@ Response: `{ id_token: "token_hash" }`
 
 1. Generate OTP and send it to e-mail <br>
 Route: /api/otp/generate <br>
-Method: GET <br><br>
+Method: POST <br><br>
+Empty request body in this case.
 
 2. Validate OTP <br>
 Route: /api/otp/validate <br>
 Method: POST <br>
-Example Payload: { "otp": "your otp number" }
+Example Request Payload: { "otp": "your otp number" }
 <br>
 
 

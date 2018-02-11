@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService {
@@ -22,4 +23,18 @@ public class UserService {
         return this.userRepository.findAll();
     }
 
+    /**
+     * Method for getting e-mail by username (key)
+     *
+     * @param username - provided username
+     * @return e-mail
+     */
+    public String findEmailByUsername(String username)
+    {
+        Optional<User> user = userRepository.findByUsername(username);
+        if (user.isPresent()) {
+            return user.get().getEmail();
+        }
+        return null;
+    }
 }

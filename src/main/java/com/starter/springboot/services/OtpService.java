@@ -17,16 +17,19 @@ public class OtpService {
 
     private OtpGenerator otpGenerator;
     private EmailService emailService;
+    private UserService userService;
 
     /**
      * Constructor dependency injector
      * @param otpGenerator - otpGenerator dependency
      * @param emailService - email service dependency
+     * @param userService - user service dependency
      */
-    public OtpService(OtpGenerator otpGenerator, EmailService emailService)
+    public OtpService(OtpGenerator otpGenerator, EmailService emailService, UserService userService)
     {
         this.otpGenerator = otpGenerator;
         this.emailService = emailService;
+        this.userService = userService;
     }
 
     /**
@@ -48,7 +51,7 @@ public class OtpService {
         LOGGER.info("Generated OTP: {}", otpValue);
 
         // fetch user e-mail from database
-        String userEmail = "heril.muratovic@logate.com";
+        String userEmail = userService.findEmailByUsername(key);
         List<String> recipients = new ArrayList<>();
         recipients.add(userEmail);
 
