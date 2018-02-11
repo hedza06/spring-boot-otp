@@ -1,7 +1,6 @@
-# Spring Boot Starter Project
+# Spring Boot OTP (One time password authentication)
 
-This is a starter project for Spring Boot Developers. It contains technologies as Spring Boot, Hibernate,
-Liquibase, JPA and Spring Security with JWT Token Authorization.
+Spring Boot project with demonstration of OTP authentication technique.
 
 
 ## Running the project
@@ -30,6 +29,17 @@ Method: **POST**
 Content-Type: **application/json**  
 Request payload: `{ username: "admin", password: "admin" }`  
 Response: `{ id_token: "token_hash" }`
+
+## OTP routes that you can called after getting access token
+
+1. Generate OTP and send it to e-mail
+Route: /api/otp/generate
+Method: GET
+
+2. Validate OTP
+Route: /api/otp/validate
+Method: POST
+Example Payload: { "otp": "your otp number" }
 
 
 ## Packaging for production

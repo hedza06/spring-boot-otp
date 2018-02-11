@@ -36,3 +36,10 @@ server:
     port: 8080
 
 debug: true
+
+email:
+  host: smtp.gmail.com
+  port: 587
+  username: hedzaprog@gmail.com
+  password: privatehedzasgoogmail747
+  debug: true
