@@ -40,6 +40,6 @@ debug: true
 email:
   host: smtp.gmail.com
   port: 587
-  username: hedzaprog@gmail.com
-  password: privatehedzasgoogmail747
+  username: your_username
+  password: your_password
   debug: true
