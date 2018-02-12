@@ -45,4 +45,4 @@ email:
   port: 587
   username: your_username
   password: your_password
-  debug: true
+  debug: false
