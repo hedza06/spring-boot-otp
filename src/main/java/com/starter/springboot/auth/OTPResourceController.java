@@ -15,7 +15,7 @@ import java.util.Map;
 @Description(value = "Resource for generating and validating OTP requests.")
 @RestController
 @RequestMapping("/api/otp")
-public class OTPResource {
+public class OTPResourceController {
 
     private OtpService otpService;
 
@@ -23,7 +23,7 @@ public class OTPResource {
      * Constructor dependency injector.
      * @param otpService - otp service
      */
-    public OTPResource(OtpService otpService) {
+    public OTPResourceController(OtpService otpService) {
         this.otpService = otpService;
     }
 

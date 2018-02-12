@@ -34,7 +34,7 @@ Response: `{ id_token: "token_hash" }`
 
 1. Generate OTP and send it to e-mail <br>
 Route: /api/otp/generate <br>
-Method: POST <br><br>
+Method: POST <br>
 Empty request body in this case.
 
 2. Validate OTP <br>

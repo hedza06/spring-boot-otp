@@ -39,3 +39,10 @@ server:
         mime-types: text/html, text/xml, text/plain, text/css, application/javascript, application/json
 
 debug: false
+
+email:
+  host: smtp.gmail.com
+  port: 587
+  username: your_username
+  password: your_password
+  debug: true

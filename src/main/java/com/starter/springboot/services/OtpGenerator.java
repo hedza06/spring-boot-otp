@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 @Service
 public class OtpGenerator {
 
-    private static final Integer EXPIRE_MIN = 5; // 5 minutes
+    private static final Integer EXPIRE_MIN = 5;
     private LoadingCache<String, Integer> otpCache;
 
     /**
