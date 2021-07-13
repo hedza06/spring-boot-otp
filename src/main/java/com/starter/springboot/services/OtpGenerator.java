@@ -56,12 +56,7 @@ public class OtpGenerator {
      */
     public Integer getOPTByKey(String key)
     {
-        try {
-            return otpCache.get(key);
-        }
-        catch (ExecutionException e) {
-            return -1;
-        }
+        return otpCache.getIfPresent(key);
     }
 
     /**
