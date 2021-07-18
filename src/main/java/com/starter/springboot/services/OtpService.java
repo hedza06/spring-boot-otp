@@ -76,7 +76,7 @@ public class OtpService {
     {
         // get OTP from cache
         Integer cacheOTP = otpGenerator.getOPTByKey(key);
-        if (cacheOTP.equals(otpNumber))
+        if (cacheOTP!=null && cacheOTP.equals(otpNumber))
         {
             otpGenerator.clearOTPFromCache(key);
             return true;
