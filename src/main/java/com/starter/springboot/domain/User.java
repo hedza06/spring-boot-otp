@@ -59,6 +59,9 @@ public class User {
     @NotNull
     private Date lastPasswordResetDate;
 
+    @Column(name = "is_otp_required")
+    private Boolean isOtpRequired;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "user_authority",
@@ -73,6 +76,7 @@ public class User {
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")})
     private Set<Role> roles;
+
 
     public Long getId() {
         return id;
@@ -98,19 +102,19 @@ public class User {
         this.password = password;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstname(String firstName) {
+    public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
 
-    public String getLastname() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastname(String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 
@@ -130,6 +134,22 @@ public class User {
         this.enabled = enabled;
     }
 
+    public Date getLastPasswordResetDate() {
+        return lastPasswordResetDate;
+    }
+
+    public void setLastPasswordResetDate(Date lastPasswordResetDate) {
+        this.lastPasswordResetDate = lastPasswordResetDate;
+    }
+
+    public Boolean getIsOtpRequired() {
+        return isOtpRequired;
+    }
+
+    public void setIsOtpRequired(Boolean isOtpRequired) {
+        this.isOtpRequired = isOtpRequired;
+    }
+
     public Set<Authority> getAuthorities() {
         return authorities;
     }
@@ -144,13 +164,5 @@ public class User {
 
     public void setRoles(Set<Role> roles) {
         this.roles = roles;
-    }
-
-    public Date getLastPasswordResetDate() {
-        return lastPasswordResetDate;
-    }
-
-    public void setLastPasswordResetDate(Date lastPasswordResetDate) {
-        this.lastPasswordResetDate = lastPasswordResetDate;
     }
 }

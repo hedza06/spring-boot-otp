@@ -32,6 +32,9 @@
             </column>
             <column name="enabled" type="bit(1)" defaultValue="1" />
             <column name="last_password_reset_date" type="datetime" />
+            <column name="is_otp_required" type="bit(1)" defaultValueBoolean="true">
+                <constraints nullable="false" />
+            </column>
         </createTable>
 
         <!-- Load data from CSV -->
