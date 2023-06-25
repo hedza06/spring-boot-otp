@@ -3,10 +3,13 @@ spring:
         restart:
             enabled: true
     datasource:
-        url: jdbc:mysql://localhost/otp?useUnicode=true&characterEncoding=utf8&useSSL=false
-        name:
+        url: jdbc:mysql://localhost/otp?useUnicode=true&characterEncoding=utf8&useSSL=false # URL for MySQL 5.7
+        # url: jdbc:mysql://localhost/otp9?useSSL=false&serverTimezone=CET&allowPublicKeyRetrieval=true&useUnicode=true # URL for MySQL 8.X
+        name: MySQL Local Connection
         username: root
         password: root
+        driver-class-name: com.mysql.jdbc.Driver # MySQL 5.7.X / 6.X.X
+        # driver-class-name: com.mysql.cj.jdbc.Driver # MySQL 8
         hikari:
             data-source-properties:
                 cachePrepStmts: true
